@@ -30,7 +30,10 @@
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/>
 </a>  
 <a href="https://powerbi.microsoft.com/pt-br/" target="_blank" el="noreferrer">
-<img src="https://store-images.s-microsoft.com/image/apps.32245.13510798883380398.61d03499-1b25-4924-9207-9384fe3b5b99.3a505d26-d272-4f46-a46b-46dd22268443?w=120" alt="power bi" width="40" height="40"/>
+<img src="https://logohistory.net/wp-content/uploads/2023/05/Power-BI-Logo.png" alt="power bi" width="71" height="40"/>
+</a>
+<a href="https://www.microsoft.com/pt-br/microsoft-365/excel" target="_blank" el="noreferrer">
+<img src="https://www.svgrepo.com/show/373589/excel.svg"  alt="excel" width="40" height="40"/>
 </a>
 </p>
 <!---
