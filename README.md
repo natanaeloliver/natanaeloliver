@@ -1,46 +1,30 @@
-<h1 align="center">Oi 👋, eu sou o Natanael de Oliveira da Rosa</h1>
-<h3 align="center">Engenheiro Eletrônico focado em Ciência de Dados.</h3>
+# Natanael Travi de Oliveira
 
-- 🔭 Atualmente estou trabalhando no **Projeto de Gestão dos aluguéis de um polo de inovação**
+Software Engineer & Project Owner | Data, Analytics & Platform Engineering
 
-- 🔭 E no **Sistema básico de um Clínica Integrada**
-  
-- 🌱 Atualmente estou aprendendo **SQL e Google Apps Script**
+I build end-to-end systems: from cloud data pipelines and Kubernetes infrastructure to internal tools that solve real operational problems.
 
-- 💬 Me pergunte sobre **Excel, Power BI, Python e SQL**
+## Currently
 
-- 📫 Você me encontra através do e-mail **natanael.oliveira.rosa@gmail.com**
+- Business Intelligence, Analytics Engineering and Data Engineering: Oracle ERP, Airflow, dbt, BigQuery, Terraform and GCP, including Kubernetes cluster management (node pools, pods, scaling)
+- Data Science: forecasting and classification models, RAG and RPA
+- Building [claude-worklog](https://github.com/natanaeloliver/claude-worklog), an open-source session context hub for Claude Code
+- Building an end-to-end rental/contract management system as a client MVP (private repo, in development)
 
-- 📄 Descubra mais sobre as minhas experiências no link [https://www.linkedin.com/in/natanael-de-oliveira-da-rosa-12460357/](https://www.linkedin.com/in/natanael-de-oliveira-da-rosa-12460357/)
+## Selected work
 
-- ⚡ Fun fact **Já apareci no Domingão do Faustão**
+**Preventive care patient classification & outreach system** *(confidential, private)* — Built the end-to-end data pipeline for a health insurance operator's preventive-care platform: extraction and batch mapping from TOTVS, MV Saúde and MK DATA, feeding BigQuery tables on utilization, contact and pending exams/consultations. Powers patient classification for comorbidities, personalized care and automated outreach messaging to reduce costs through preventive medicine.
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/https://www.linkedin.com/in/natanael-de-oliveira-da-rosa-12460357/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/natanael-de-oliveira-da-rosa-12460357/" height="30" width="40" /></a>
-<a href="https://instagram.com/@natanael.olive.r" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="@natanael.olive.r" height="30" width="40" /></a>
-</p>
+**[claude-worklog](https://github.com/natanaeloliver/claude-worklog)** — Session context hub for Claude Code: hooks that auto-inject task context and log sessions across multiple repos, so context survives session resets.
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left">
-<a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noreferrer"> 
-<img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="mssql" width="40" height="40"/>
-</a> 
-<a href="https://www.python.org" target="_blank" rel="noreferrer">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/>
-</a>  
-<a href="https://powerbi.microsoft.com/pt-br/" target="_blank" el="noreferrer">
-<img src="https://logohistory.net/wp-content/uploads/2023/05/Power-BI-Logo.png" alt="power bi" width="71" height="40"/>
-</a>
-<a href="https://www.microsoft.com/pt-br/microsoft-365/excel" target="_blank" el="noreferrer">
-<img src="https://www.svgrepo.com/show/373589/excel.svg"  alt="excel" width="40" height="40"/>
-</a>
-</p>
-<!---
-<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=natanaeloliver&show_icons=true&locale=en&layout=compact" alt="natanaeloliver" /></p>
---->
+## Tech stack
 
-<!---
-natanaeloliver/natanaeloliver is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+| Data & Cloud | Backend | AI/ML | Tools |
+|---|---|---|---|
+| GCP, BigQuery, Snowflake, ClickHouse, dbt, Airflow, Oracle ERP, Terraform, Kubernetes | Python, FastAPI, SQLAlchemy, PostgreSQL, MariaDB | Forecasting, Classification, RAG | SQL, Power BI, Excel, PowerShell, RPA |
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=natanaeloliver&layout=compact&theme=default)
+
+## Contact
+
+[LinkedIn](https://www.linkedin.com/in/natanael-de-oliveira-da-rosa-12460357/) · natanael.oliveira.rosa@gmail.com
