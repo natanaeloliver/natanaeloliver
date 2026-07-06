@@ -23,7 +23,7 @@ I build end-to-end systems: from cloud data pipelines and Kubernetes infrastruct
 |---|---|---|---|
 | GCP, BigQuery, Snowflake, ClickHouse, dbt, Airflow, Oracle ERP, Terraform, Kubernetes | Python, FastAPI, SQLAlchemy, PostgreSQL, MariaDB | Forecasting, Classification, RAG | SQL, Power BI, Excel, PowerShell, RPA |
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=natanaeloliver&layout=compact&theme=default)
+![Top Langs](./profile/top-langs.svg)
 
 ## Contact
 
