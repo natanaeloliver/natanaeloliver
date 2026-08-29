@@ -1,39 +1,48 @@
 # Natanael Travi de Oliveira
 
-Platform Engineer | Systems Integration & Cloud Data Infrastructure
+Analytics / Data Engineer
 
-I work on the seam between systems that were never designed to talk to each other. Cloud data pipelines, the Kubernetes infrastructure under them, and the business rules they end up carrying.
+I work on the modeled layer of a healthcare payer's data platform, and on everything that has to happen before a model can exist. I pull the data out of ERPs, APIs and event reports like Mosia ([Mobile Saúde](https://mobilesaudejira.atlassian.net/wiki/spaces/MO/pages/3117252616/)) through RPA, and the entire data stream of a hospital, from the claim (guia de atendimento) to the exam result, in [MV](https://mv.com.br/). Then I structure the transformations on top, and run the Kubernetes and orchestration underneath.
 
 ## Currently
 
-- Running a cloud data platform end to end, from GCP and BigQuery through dbt, Airflow and Terraform, including the Kubernetes cluster it lives on (node pools, pods, scaling)
-- Integrating sources that were never meant to be integrated, including Oracle ERP extraction and RPA
-- Applying forecasting (SARIMAX), classification and NLP where they solve a real operational problem
-- Building [claude-worklog](https://github.com/natanaeloliver/claude-worklog), an open-source session context hub for Claude Code
+- Building the modeled layer in BigQuery and dbt, with declarative tests and column-level documentation, on top of a GCP platform I helped migrate from an empty environment
+- Running the orchestration and the infrastructure under it, from Airflow DAGs to node pools, Helm-versioned pod configuration promoted from dev to production, and Terraform for the infrastructure and the IAM, where I am reworking access for the cloud migration so that roles are simpler and cover buckets as well as datasets
+- Building and publishing the Airflow and dbt images in CI, tagged in Artifact Registry, with every model run and tested against a dev dataset before it reaches production
+- Making extraction from an Oracle ERP incremental and parallel, and keeping the data quality rules that decide whether a number is publishable
+- Building [claude-worklog](https://github.com/natanaeloliver/claude-worklog), an open-source session context hub for Claude Code, so that multi-repo teams can run parallel sessions and always know what happened in which repository without reading every commit
 
 ## Selected work
 
 **Preventive care patient classification & outreach system** *(confidential, private)*
 
-Built the full data flow for a health plan covering 100,000+ beneficiaries. Extraction and batch mapping from TOTVS Protheus, MV Saúde and MK DATA, unified into BigQuery tables on utilization, contact and pending exams/consultations. Powers patient classification for comorbidities and personalized preventive outreach.
+Built the full data flow for a health plan covering 100,000+ beneficiaries. Extraction and batch mapping from [TOTVS Protheus](https://www.totvs.com/sistema-de-gestao/totvs-backoffice-linha-protheus/), [MV Saúde](https://mv.com.br/) and [MK DATA](https://mkdata.com.br/) into BigQuery tables on utilization, contact and pending exams. The three systems do talk to each other, but not on a 1:1, 1:N or N:N relationship, so each field had to be validated in each database before the diagnosis codes would line up across appointments, schedules, clinical documents, financial records and inventory.
 
 **Oracle extraction redesign** *(confidential, private)*
 
-Found `ORA_ROWSCN` and rebuilt extraction around it. Incremental loads keyed on the change number, bucketed by `R_E_C_N_O_` so a single table is pulled in parallel instead of serially. Paired with infrastructure work on node pool sizing, a dedicated node for DAG task execution, autoscaling, and the connection load on the Airflow metadata database. The full run came out more than 3x faster and the infrastructure failures stopped.
+Found `ORA_ROWSCN` and rebuilt extraction around it. The change number is per Oracle block rather than per row, and the database does not have `ROWDEPENDENCIES` enabled, which my team has no permission to change, so the design takes the approximate watermark and clears the duplicates downstream, in dbt and in a scheduled dedup job. Loads are bucketed by `R_E_C_N_O_`, `ID` or whatever the table's primary key is, so a single table is pulled in parallel. Paired with infrastructure work on node pool sizing, a dedicated node for DAG task execution, autoscaling, and the connection load on the Airflow metadata database. The full run came out more than 3x faster and the infrastructure failures stopped. I am now driving the controlled test to enable `ROWDEPENDENCIES` on one of the largest tables with the infrastructure team, comparing both extractions side by side before the dedup window is widened.
 
-**Third-party platform integration** *(confidential, private)*
+**Third-party platform integration ([Mosia](https://mobilesaudejira.atlassian.net/wiki/spaces/MO/pages/3117252616/))** *(confidential, private)*
 
-Pulled data out of a healthcare platform that had no available API. Mapped the application iframes, drove the session through Java variables in AutomationEdge, minted GCP service-account tokens from Python via PowerShell, and landed segmented CSV into BigQuery for dbt to finish inside an Airflow DAG.
+Pulled data out of a healthcare service platform that had no available API, where the occurrence report is not a table: one file mixes header, creation, state change, closure and survey rows under each protocol, in chronological order, behind a one-time download link. I mapped the application iframes, drove the session through Java variables in AutomationEdge, minted GCP service-account tokens from Python via PowerShell, and landed segmented CSV into BigQuery for dbt to finish inside an Airflow DAG.
+
+**Cloud cost and provider evaluation** *(confidential, private)*
+
+Broke a cloud bill down by SKU across 13 services and ran the same transformations and reads against a second provider to compare. The finding that changed policy was that 99.55% of the storage line was cross-region transfer rather than storage. Designed and documented the network for the evaluated environment, with public and private subnets, per-subnet route tables and security lists, internet, NAT and service gateways, and a two-tunnel site-to-site VPN back to the on-premise firewall.
+
+**Business rules of a payer warehouse** *(confidential, private)*
+
+Write and continuously audit the business rules the reporting layer runs on: the chart of accounts, how an active membership is counted, how a loss ratio is composed, and the per-item cost of a member's procedure across authorization, execution, accounted and billed claims, down to item, procedure, member, subcontract and contracting company. That means knowing what counts, from which date, and what silently changes the number when a source system changes, even without extraction errors.
 
 **[claude-worklog](https://github.com/natanaeloliver/claude-worklog)**
 
-Session context hub for Claude Code. Hooks auto-inject task context and log sessions across multiple repos, so context survives session resets.
+Session context hub for Claude Code. Hooks auto-inject task context and log sessions across multiple repos, so context survives session resets and stays current, and anyone joining the work can pick up their part without asking around, which is what makes parallel sessions practical.
 
 ## Tech stack
 
 | Data & Cloud | Databases | Backend | Tools |
 |---|---|---|---|
-| GCP, BigQuery, ClickHouse, dbt, Airflow, Oracle ERP, Terraform, Kubernetes, Docker | PostgreSQL, MariaDB, Oracle, Redis | Python, FastAPI, SQLAlchemy | SQL, PowerShell, Bash, RPA (AutomationEdge), Power BI |
+| BigQuery, dbt, Airflow, GCP, ClickHouse, Oracle ERP, Terraform, Kubernetes, Helm, Docker | PostgreSQL, MariaDB, Oracle | Python, FastAPI, SQLAlchemy | SQL, PowerShell (Windows), Bash (Linux), RPA (AutomationEdge), Qlik, Power BI |
 
 ![Top Langs](./profile/top-langs.svg)
 
