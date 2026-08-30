@@ -10,14 +10,14 @@ I work on the modeled layer of a healthcare payer's data platform, and on everyt
 - Running the orchestration and the infrastructure under it, from Airflow DAGs to node pools, Helm-versioned pod configuration promoted from dev to production, and Terraform for the infrastructure and the IAM, where I am reworking access for the cloud migration so that roles are simpler and cover buckets as well as datasets
 - Building and publishing the Airflow and dbt images in CI, tagged in Artifact Registry, with every model run and tested against a dev dataset before it reaches production
 - Making extraction from an Oracle ERP incremental and parallel, and keeping the data quality rules that decide whether a number is publishable
-- Keeping all of it running, with two years of production support across the legacy and the current reporting stacks, where the failures that repeat are source schema changes that break extraction downstream, cloud-to-on-premise access, and network permissions lost to a tool upgrade. I do not own the monitoring stack, so my part of it is specifying what to detect and how, like the alert for a staging environment that cloned a database and broke DNS resolution
+- Keeping all of it running, with two years of production support across the legacy Qlik stack and the current cloud one, where the failures that repeat are source schema changes that break extraction downstream, cloud-to-on-premise access, and network permissions lost to a tool upgrade. I do not own the monitoring stack, so my part of it is specifying what to detect and how, like the alert for a staging environment that cloned a database and broke DNS resolution
 - Building [claude-worklog](https://github.com/natanaeloliver/claude-worklog), an open-source session context hub for Claude Code, so that multi-repo teams can run parallel sessions and always know what happened in which repository without reading every commit
 
 ## Selected work
 
 **Preventive care patient classification & outreach system** *(confidential, private)*
 
-Built the full data flow for a health plan covering 100,000+ beneficiaries. Extraction and batch mapping from [TOTVS Protheus](https://www.totvs.com/sistema-de-gestao/totvs-backoffice-linha-protheus/), [MV Saúde](https://mv.com.br/) and [MK DATA](https://mkdata.com.br/) into BigQuery tables on utilization, contact and pending exams. The three systems do talk to each other, but not on a 1:1, 1:N or N:N relationship, so each field had to be validated in each database before the diagnosis codes would line up across appointments, schedules, clinical documents, financial records and inventory.
+Built the full data flow for a health plan covering 100,000+ beneficiaries. Extraction and batch mapping from [TOTVS Protheus](https://www.totvs.com/sistema-de-gestao/totvs-backoffice-linha-protheus/), [MV Saúde](https://mv.com.br/) and [MK DATA](https://mkdata.com.br/) into BigQuery tables on utilization, contact and pending exams. The three systems do talk to each other, but not on a 1:1, 1:N or N:N relationship, so each field had to be validated in each database before the diagnosis codes would line up across appointments, schedules, clinical documents and execution claims.
 
 **Oracle extraction redesign** *(confidential, private)*
 
