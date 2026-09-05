@@ -53,4 +53,4 @@ Session context hub for Claude Code. Hooks auto-inject task context and log sess
 
 ## Contact
 
-[LinkedIn](https://www.linkedin.com/in/natanael-travi-de-oliveira-12460357/) · natanael.oliveira.rosa@gmail.com
+[LinkedIn](https://www.linkedin.com/in/natanael-da-rosa-travi-de-oliveira-12460357/) · natanael.oliveira.rosa@gmail.com
