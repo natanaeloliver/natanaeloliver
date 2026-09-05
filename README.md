@@ -25,7 +25,7 @@ Found `ORA_ROWSCN` and rebuilt extraction around it. The change number is per Or
 
 **Third-party platform integration ([Mosia](https://mobilesaudejira.atlassian.net/wiki/spaces/MO/pages/3117252616/))** *(confidential, private)*
 
-Pulled data out of a healthcare service platform that had no available API, where the occurrence report is not a table: one file mixes header, creation, state change, closure and survey rows under each protocol, in chronological order, behind a one-time download link. I mapped the application iframes, drove the session through Java variables in AutomationEdge, minted GCP service-account tokens from Python via PowerShell, and landed segmented CSV into BigQuery for dbt to finish inside an Airflow DAG. Once the manager could see a whole protocol without opening the platform, the call center got 50% more out of the same shift, over $20K a year of capacity.
+Pulled data out of a healthcare service platform that had no available API, where the occurrence report is not a table: one file mixes header, creation, state change, closure and survey rows under each protocol, in chronological order, behind a one-time download link. I mapped the application iframes, drove the session through Java variables in AutomationEdge, minted GCP service-account tokens from Python via PowerShell, and landed segmented CSV into BigQuery for dbt to finish inside an Airflow DAG. Once the manager could read a whole protocol without opening the platform, the sector could finally say what it needed automated, knowing which demands kept returning and where its process was dropping them.
 
 **Cost, from the query to the cloud bill** *(confidential, private)*
 
